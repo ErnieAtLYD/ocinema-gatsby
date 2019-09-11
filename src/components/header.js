@@ -1,42 +1,65 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
+import { StaticQuery, graphql, Link } from "gatsby"
 import React from "react"
+import ("./style.scss")
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+const Header = () => (
+  <StaticQuery
+    query={graphql`
+      query {
+        wordpressSiteMetadata {
+          name
+        }
+        wordpressMenusMenusItems(name: {eq: "Main Navigation"}) {
+          items {
+            title
+            object
+            url
+          }
+        }
+      }
+    `}
+    render={data => (
+      <nav
+        className="navbar is-dark"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="navbar-brand">
+          <Link
+            to="/"
+            className="navbar-item"
+          >
+            {data.wordpressSiteMetadata.name}
+          </Link>
+          <a
+            role="button"
+            className="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div className="navbar-menu">
+          <div className="navbar-start">
+            {data.wordpressMenusMenusItems.items.map((item, index) => (
+              <Link
+                className="navbar-item"
+                to={`${item.url}`}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+      </nav>
+    )}
+  />
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
