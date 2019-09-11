@@ -1,3 +1,5 @@
+# O Cinema GatsbyJS/WordPress REST API Prototype
+
 So I'm playing around with GatsbyJS and a modified REST API based off o-cinema.org's WordPress REST API to try to build a speedy static site. This is also an attempt to build my very first React component. Oooh!
 
 This is a fork off of the gatsby-start-default repo. Its README.md file is here: https://github.com/gatsbyjs/gatsby-starter-default/blob/master/README.md
