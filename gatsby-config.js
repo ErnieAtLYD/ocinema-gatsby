@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `O Cinema Gatsby Prototype`,
+    siteUrl: `https://compassionate-mirzakhani-923f58.netlify.com`,
+    description: `Tinkering with GatsbyJS and the WordPress REST API by building a static site for O Cinema.`,
+    author: `@ernieatlyd`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -30,8 +31,8 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "ocinema.test",
-        protocol: "http",
+        baseUrl: "o-cinema.org",
+        protocol: "https",
         hostingWPCOM: false,
         // We will be using some advanced custom fields
         useACF: true,
@@ -39,8 +40,8 @@ module.exports = {
         verboseOutput: false,
         perPage: 100,
         searchAndReplaceContentUrls: {
-          sourceUrl: "http://ocinema.test",
-          replacementUrl: "https://localhost:8000",
+          sourceUrl: "https://o-cinema.org",
+          replacementUrl: "https://compassionate-mirzakhani-923f58.netlify.com",
         },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
@@ -65,13 +66,13 @@ module.exports = {
       resolve: "gatsby-source-tribe-events",
       options: {
         // baseURL should include the protocol (https or http)
-        baseUrl: "http://ocinema.test",
+        baseUrl: "https://o-cinema.org",
         // maxEvents is optional, default: 10, max: 50
         maxEvents: 10
       }
     },
     `gatsby-plugin-sass`,
-    `gatsby-plugin-sitemap`,
+    //`gatsby-plugin-sitemap`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

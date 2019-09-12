@@ -47,12 +47,12 @@ const Header = () => (
         <div className="navbar-menu">
           <div className="navbar-start">
             {data.wordpressMenusMenusItems.items.map((item, index) => (
-              <Link
+              <a
                 className="navbar-item"
-                to={`${item.url}`}
+                href={item.url}
               >
                 {item.title}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
